@@ -24,12 +24,18 @@ export const Card = ({name,flag,abbr}) =>{
 export default function Countries(){
 const [countries,setCountries] =useState([]);
  
-    const APIEndPoint =" https://xcountries-backend.azurewebsites.net/all";
+    const APIEndPoint =" https://xcol";
 
 useEffect(() => {
     fetch(APIEndPoint)
-    .then((res) => res.json())
-    .then((data) => setCountries(data)).catch((err) => console.error(err))
+    .then((res) => {
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    return res.json();
+  })
+    .then((data) => setCountries(data))
+    .catch((err) => console.error("Error fetching data:",err))
 }, [])
 
 return (
