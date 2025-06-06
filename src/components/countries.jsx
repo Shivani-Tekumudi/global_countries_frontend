@@ -24,7 +24,7 @@ export const Card = ({name,flag,abbr}) =>{
 export default function Countries(){
 const [countries,setCountries] =useState([]);
  
-    const APIEndPoint =" https://xcol";
+    const APIEndPoint ="https://xcountries-backend.azurewebsites.net/all";
 
 useEffect(() => {
     fetch(APIEndPoint)
